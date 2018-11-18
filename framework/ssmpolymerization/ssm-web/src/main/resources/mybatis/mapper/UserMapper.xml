@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.shen.mapper.UserMapper">
+    <insert id="addUser">
+        insert into tb_user (user_name, password, name, age, sex, birthday, created, updated)
+        values (#{userName},#{password},#{name},#{age},#{sex},#{birthday},now(),now());
+    </insert>
+    <delete id="deleteUserById">
+        delete from tbtb.tb_user where id = #{id}
+    </delete>
+    <select id="queryUserById" resultType="User">
+        select * from tb_user where id = #{id}
+    </select>
+    <select id="queryUserList" resultType="cn.shen.pojo.User">
+        select * from tb_user;
+    </select>
+</mapper>

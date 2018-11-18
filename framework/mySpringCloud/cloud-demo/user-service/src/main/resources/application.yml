@@ -1,0 +1,25 @@
+server:
+  port: 9101
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis
+    username: root
+    password: 1998
+  application:
+    name: user-service
+
+
+
+eureka:
+  client:
+    register-with-eureka: true # 是否注册自己的信息到EurekaServer，默认是true
+    fetch-registry: true # 是否拉取其它服务的信息，默认是true
+    service-url: # EurekaServer的地址，现在是自己的地址，如果是集群，需要加上其它Server的地址。
+      defaultZone: http://127.0.0.1:10086/eureka #,http://127.0.0.1:10087/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 10 # 10秒即过期 若是超过此时间。Eureka则会认为此服务失效 。并将其从服务列表中剔除
+    lease-renewal-interval-in-seconds: 5 # 5秒一次心跳   服务提供者向Eureka发送心跳信息。表明服务状态正常
+    instance-id: ${spring.application.name}:${server.port}
+

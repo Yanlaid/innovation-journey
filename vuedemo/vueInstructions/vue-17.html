@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <div v-if="boo"><!--这里的v-if判断，是根据data中的boo属性判断的。为布尔值-->
+        <h2>TRUE</h2>
+    </div>
+    <div v-else><H1>FALSE</H1></div>
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+
+    //import {Vue} from "vue";
+
+    let aa = new Vue({
+        el: "#app",
+        data: {
+            boo: true
+        },
+        methods: {}
+    })
+
+</script>
+</body>
+</html>

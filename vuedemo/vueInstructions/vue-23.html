@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .add {
+            width: 50px;
+            height: auto;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="add"></div>
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+
+    //import {Vue} from "vue";
+
+    let aa = new Vue({
+        el: "#app",
+        data: {
+            num: 0
+        },
+        methods: {
+            over(val) {
+                this.num = val;
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <ul>                     <!--第一个参数为遍历的当前对象，第二个为下标-->
+        <li v-text="" v-for="(user,index) in users">
+            {{index+1}}--{{user.name}}-{{user.gender}}-{{user.age}}
+        </li>
+    </ul>
+
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+
+    let aa = new Vue({
+        el: "#app",
+        data: {
+            users: [
+                {name: '柳岩', gender: '女', age: 21},
+                {name: '社会我拓哥', gender: '男', age: 30},
+                {name: '范冰冰', gender: '女', age: 24},
+                {name: '刘亦菲', gender: '女', age: 18},
+                {name: '古力娜扎', gender: '女', age: 25}
+            ]
+        },
+        methods: {}
+    })
+
+</script>
+</body>
+</html>

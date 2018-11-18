@@ -1,0 +1,17 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: user-client
+eureka:
+  client:
+    register-with-eureka: true #是否注册自己到Eureka中
+    fetch-registry: true #是否从Eureka中拉取其他服务信息
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka #,http://127.0.0.1:10087/eureka
+    registry-fetch-interval-seconds: 5 #从Eureka中获取服务器实例的每次拉取时间
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+user-service:
+  ribbon: #负载均衡的算法，下面的是随机从服务器实例中选一个
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

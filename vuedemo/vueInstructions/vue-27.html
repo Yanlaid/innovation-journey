@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-model="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="name" placeholder='abc'>
+    <input type="text" v-model="age" placeholder='def'>
+
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+
+    //import {Vue} from "vue";
+
+    let aa = new Vue({
+        el: "#app",
+        data: {
+            name:'',
+            age:0,
+        },
+        methods: {},
+        computed: {},
+        watch:{
+            /*handler写法，可以做一些复杂操作*/
+           name:{
+               handler(newVal,oldVal){
+                   console.log(newVal, oldVal);
+               }
+           },
+            /*简单写法*/
+           age(newVal,oldVal){
+               console.log(newVal, oldVal);
+           }
+        }
+    })
+</script>
+</body>
+</html>

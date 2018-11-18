@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <div v-if="name==='shen'"> shen</div>
+    <div v-else-if="name==='s'">s</div>
+    <div v-else>其他</div>
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+
+    let aa = new Vue({
+        el: "#app",
+        data: {
+            name: "shen",
+        },
+        methods: {}
+    })
+
+</script>
+</body>
+</html>

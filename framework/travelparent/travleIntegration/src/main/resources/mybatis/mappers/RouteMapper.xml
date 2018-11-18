@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.shen.travleIntegration.mapper.RouteMapper">
+
+    <select id="queryPopularityRouteList" resultType="Route">
+        select * from tab_route where rflag = '1' order by count desc limit 0,4;
+    </select>
+
+    <select id="queryNewsRouteList" resultType="Route">
+           select * from tab_route where rflag = '1' order by rdate desc limit 0,4
+    </select>
+
+    <select id="queryThemesRouteList" resultType="Route">
+          select * from tab_route where rflag = '1' and isThemeTour = '1' order by rdate limit 0,4;
+    </select>
+    <select id="queryRouteCount" resultType="java.lang.Integer">
+        select count(*) from tab_route where rflag = '1'
+        <if test="cid!=null">
+            and cid = #{cid}
+        </if>
+        <if test="rname!=null and rname.trim() != ''">
+            and rname like '%' #{rname} '%'
+        </if>
+    </select>
+    <select id="queryRouteListPage" resultType="cn.shen.travleIntegration.pojo.Route">
+        select * from tab_route where rflag ='1'
+        <if test="cid != null">
+            and cid = #{cid}
+        </if>
+        <if test="rname!=null and rname.trim()!=''">
+            and rname like '%' #{rname} '%'
+        </if>
+        limit #{firstResult},#{pageSize};
+    </select>
+</mapper>

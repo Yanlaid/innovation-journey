@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    <input type="text" v-model="a">
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+
+    //import {Vue} from "vue";
+
+    let aa = new Vue({
+        el: "#app",
+        data: {
+            a:0,
+        },
+        methods: {},
+        computed: {},
+        watch: {
+            a(newVal,oldVal){
+                console.log(newVal, oldVal);
+
+            }
+        }
+
+    })
+
+</script>
+</body>
+</html>

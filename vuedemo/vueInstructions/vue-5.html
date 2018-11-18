@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div class="app">
+    <input type="text" v-model="num">
+    <button v-on:click="add">+</button>
+    <button v-on:click="red">-</button>
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+   let a = new Vue({
+        el: ".app",
+        data: {
+            num: 1
+        },
+        methods: {
+            add(){
+              a.num++
+            },
+            red:()=>this.num--,
+        }
+    })
+</script>
+</body>
+</html>

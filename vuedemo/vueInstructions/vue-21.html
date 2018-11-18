@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .zdd {
+            border: 1px solid red;
+        }
+
+        .bdd {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div v-bind:class="{zdd:num===1}" @mouseenter="over(1)">
+        abcd
+    </div>
+    <br><br><br>
+    <div v-bind:class="{zdd:num===2}" @mouseenter="over(2)">
+        dddd
+    </div>
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+
+    //import {Vue} from "vue";
+
+    let aa = new Vue({
+        el: "#app",
+        data: {
+            isAct: 'zdd',
+            num: 0,
+            isBct: ''
+        },
+        methods: {
+            over(val) {
+                if (val) {
+                    this.num = val;
+                }
+
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

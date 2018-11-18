@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*OLD*/
+        const person1 = {
+            name: 'shenxinran',
+            eat1: function (food) {
+                console.log('吃 ' + food);
+            }
+        };
+        /*NEW*/
+        const person2 = {
+            name: 'shenxinran',
+            /*箭头函数版*/
+            eat2: food => console.log("food：" + food),
+            /*简写版*/
+            eat3(food) {
+                console.log(food)
+            }
+        };
+    </script>
+</head>
+<body onload="person2.eat2('热狗')">
+
+</body>
+</html>

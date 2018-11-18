@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <ul><!--迭代对象时：第一个参数为遍历的当前对象的值，第二个为属性名字-->
+        <li v-text="" v-for="(value,key,index) in user" :key="index">
+            {{index}}--- {{key}}---{{value}}
+        </li>
+    </ul>
+
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+
+    let aa = new Vue({
+        el: "#app",
+        data: {
+            user: {name: '柳岩', gender: '女', age: 21}
+        },
+        methods: {}
+    })
+
+</script>
+</body>
+</html>

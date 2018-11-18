@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" name="lan" v-model="lan" value="jaa">
+    <input type="checkbox" name="lan" v-model="lan" value="ccc">
+    <input type="checkbox" name="lan" v-model="lan" value="dfa">
+    <input type="checkbox" name="lan" v-model="lan" value="goo">
+    <hr>
+    <h2>{{lan.join(',')}}</h2>
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+
+    let app = new Vue({
+        el: "#app",
+        data: {
+            lan: []
+        }
+    })
+
+</script>
+</body>
+</html>

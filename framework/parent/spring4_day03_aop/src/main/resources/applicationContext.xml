@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd
+						   http://www.springframework.org/schema/context
+						   http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--确认目标对象-->
+    <!--基于接口-->
+    <bean class="cn.shen.spring.a_proxy.CustomerServiceImpl" id="customerService"/>
+    <!--基于类的-->
+    <bean class="cn.shen.spring.a_proxy.ProductService" id="productService"/>
+
+    <!--编写并配置通知类-->
+    <bean class="cn.shen.spring.b_oldaop.TimeLogIntercptor" id="timeLogAdvice"/>
+    <!--配置切入点与切面-->
+    <aop:config>
+        <!--配置切入点-->
+        <aop:pointcut id="myCut" expression="bean(*Service)"/>
+        <!--配置切面-->
+        <!--advice-ref:配置通知方法
+            pointcut-ref:配置通知作用的连接点
+            -->
+
+        <aop:advisor advice-ref="timeLogAdvice" pointcut-ref="myCut"/>
+    </aop:config>
+</beans>

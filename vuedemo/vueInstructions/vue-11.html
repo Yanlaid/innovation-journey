@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+
+    <a href="http://www.baidu.com" @click.prevent="aa()">dianwo1</a>
+    <a href="javascript:void(0)" @click.prevent="aa()">dianwo2</a>
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+
+    let aa = new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+            aa() {
+                window.alert("say hello");
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

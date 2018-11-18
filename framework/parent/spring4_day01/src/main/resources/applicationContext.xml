@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="cn.shen.a_quickstart.UserDaoImpl" id="userDao"/>
+
+    <!--将 userDao注入到 userService中-->
+    <bean class="cn.shen.a_quickstart.UserServiceImpl" id="userService">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+    <bean class="cn.shen.b_xmlnewbean.Bean1" id="bean1"/>
+
+    <bean class="cn.shen.b_xmlnewbean.Bean2Factory" id="bean2" factory-method="getBean2"/>
+
+    <bean class="cn.shen.b_xmlnewbean.Bean3Factory" id="bean3Factory"/>
+    <bean id="bean3" factory-bean="bean3Factory" factory-method="getBean3"/>
+
+    <bean class="cn.shen.b_xmlnewbean.Bean4Factory" id="bean4"/>
+
+
+    <bean class="cn.shen.c_xmlscope.SingletonBean" id="singletonBean"/>
+    <bean class="cn.shen.c_xmlscope.PrototypeBean" id="prototypeBean" scope="prototype"/>
+
+    <bean class="cn.shen.d_xmllifecycle.LifeCycleBean" id="lifeCycleBean" init-method="init" destroy-method="destory"/>
+
+    <bean class="cn.shen.e_xmlpropertydi.Car" id="car">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="name" value="法拉利"/>
+        <constructor-arg name="price" value="1940000.0"/>
+    </bean>
+
+    <bean class="cn.shen.e_xmlpropertydi.Person" id="person">
+        <property name="id" value="0001"/>
+        <property name="name" value="沈欣然"/>
+        <property name="car" ref="car"/>
+    </bean>
+
+    <bean class="cn.shen.e_xmlpropertydi.Person" id="person2" p:id="0002" p:name="沈欣然" p:car-ref="car"/>
+
+    <bean class="cn.shen.e_xmlpropertydi.Person" id="person3" p:id="#{1+1}" p:name="#{person.name.toUpperCase()}" p:car="#{car}"/>
+</beans>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--装配SqlSessionBean-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+        <!--注入核心配置文件-->
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <!--注入数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--配置别名扫描-->
+        <property name="typeAliasesPackage" value="cn.shen.pojo"/>
+        <!--配置映射文件-->
+        <property name="mapperLocations" value="classpath:mybatis/mapper/UserMapper.xml"/>
+    </bean>
+
+
+    <!--装配单个mapper
+            不常用。一般不止一个mapper
+        -->
+   <!-- <bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="userMapper">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        <property name="mapperInterface" value="cn.shen.mapper.UserMapper"/>
+    </bean>-->
+
+    <!--装配多个bean-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.shen.mapper"/>
+    </bean>
+
+
+</beans>

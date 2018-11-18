@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.shen.mapper.UserMapper">
+
+    <resultMap id="userMap" type="User" autoMapping="true">
+        <id column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+    </resultMap>
+    <sql id="comonSql">
+        id, user_name, password, name, age, sex, birthday, created, updated
+    </sql>
+
+    <insert id="insertUser">
+
+        insert into tb_user (user_name, password, name, age, sex, birthday, created, updated)
+        values (#{userName}, #{password}, #{name}, #{age}, #{sex}, #{birthday}, now(), now());
+    </insert>
+    <update id="updateUser"></update>
+
+    <delete id="deleteUserById"></delete>
+
+    <select id="queryUserById" resultMap="userMap">
+        select
+        <include refid="comonSql"/>
+        , user_name as userName
+        from tb_user
+        where id = #{id};
+    </select>
+    <select id="queryAllUser" resultType="cn.shen.pojo.User">
+        select
+        <include refid="commonSQL.sql"/>
+        from tb_user;
+    </select>
+    <select id="queryUserByTableName" resultType="cn.shen.pojo.User">
+        select *
+        from ${tableName}
+
+    </select>
+    <select id="login" resultType="cn.shen.pojo.User">
+        select *
+        from tb_user
+        where user_name = #{userName}
+          and password = #{password};
+    </select>
+    <select id="loginMap" resultType="cn.shen.pojo.User">
+        select *
+        from tb_user
+        where user_name = #{userName}
+          and password = #{password};
+    </select>
+    <select id="selectUserByFuzzyQueryName" resultType="cn.shen.pojo.User">
+        select *
+        from tb_user
+        where user_name like '%${fuzzyName}%';
+    </select>
+
+    <select id="queryUserListLikeUserName" resultType="cn.shen.pojo.User">
+        select <include refid="comonSql"/>
+        from tb_user where sex = 1
+        <if test="userName!=null and userName.trim()!=''">
+            and user_name like '%' #{userName} '%'
+        </if>
+    </select>
+    <select id="queryUserListLikeUserNameOrAge" resultType="cn.shen.pojo.User">
+        select * from tb_user
+        where sex = 1
+        <choose>
+            <when test="userName!=null and userName.trim()!=''">
+                and user_name like '%' #{userName} '%'
+            </when>
+            <when test="age!=null">
+                and age = #{age}
+            </when>
+            <otherwise>
+                and user_name = 'zhangsan'
+            </otherwise>
+        </choose>
+    </select>
+    <select id="queryUserListLikeUserNameAndAge" resultType="cn.shen.pojo.User">
+        select *
+        from tb_user
+        <where>
+            <if test="userName!=null and userName.trim()!=''">user_name like '%' #{userName} '%'</if>
+            <if test="age!=null">and age = #{age}</if>
+        </where>
+    </select>
+
+    <update id="updateUserSelective">
+        update tb_user
+        <set>
+            <if test="userName!=null and userName.trim()!=''">user_name =#{userName},</if>
+            <if test="password!=null and password.trim()!=''">password =#{password},</if>
+            <if test="name!=null and name.trim()!=''">name =#{name},</if>
+            <if test="age!=null">age =#{age},</if>
+            <if test="sex!=null">sex =#{sex},</if>
+            <if test="birthday!=null">birthday =#{birthday},</if>
+            updated = now()
+        </set>
+        where id = #{id};
+    </update>
+
+</mapper>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        const promise = new Promise(function (resolve, reject) {
+            /*此处进行异步操作*/
+            setTimeout(() => {
+                let num = Math.random();
+                if (num < 0.5) {
+                    /*成功使用resolve*/
+                    resolve("成功了：" + num);
+                } else {
+                    /*失败使用reject*/
+                    reject("失败了：" + num);
+                }
+            }, 300);
+        })
+        /*可以使用promise中的方法对异步返回的结果进行操作*/
+        promise.then(/*then：成功后的操作，value代表resolve的值*/
+            value => console.log(value)
+        ).catch(/*then：成功后的操作，reason代表reject的值*/
+            reason => console.log(reason)
+        );
+    </script>
+</head>
+<body>
+
+</body>
+</html>
