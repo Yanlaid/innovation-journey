@@ -10,8 +10,9 @@ import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@EnableHystrix
 @EnableDiscoveryClient
+//开启Hystrix熔断器
+@EnableHystrix
 public class  UserClientStart {
     public static void main(String[] args) {
         SpringApplication.run(UserClientStart.class);
