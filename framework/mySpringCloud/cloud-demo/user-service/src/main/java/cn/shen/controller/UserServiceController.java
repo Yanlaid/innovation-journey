@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Random;
+
 @RestController
 @RequestMapping("hello")
 public class UserServiceController {
@@ -16,7 +18,7 @@ public class UserServiceController {
 
     @GetMapping("hello1/{id}")
     public User getq(@PathVariable("id") Long id) throws InterruptedException {
-
+        Thread.sleep(new Random().nextInt(2000));
         return userService.queryById(id);
     }
 }

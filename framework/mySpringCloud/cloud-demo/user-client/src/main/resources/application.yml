@@ -12,6 +12,21 @@ eureka:
     registry-fetch-interval-seconds: 5 #从Eureka中获取服务器实例的每次拉取时间
   instance:
     instance-id: ${spring.application.name}:${server.port}
-user-service:
-  ribbon: #负载均衡的算法，下面的是随机从服务器实例中选一个
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#user-service: #指定user-service的负载均衡策略
+#  ribbon: #负载均衡的算法，下面的是随机从服务器实例中选一个
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+ribbon:  #这里是全局的负载均衡配置
+  ConnectTimeout: 250 # Ribbon的连接超时时间 
+  ReadTimeout: 1000 # Ribbon的数据读取超时时间
+  NFLoadBalancerRuleClassName: com .netflix.loadbalancer.RandomRule
+
+feign: #配置Feign的Hystrix的策略
+  hystrix:
+    enabled: true
+  compression: #开启请求压缩
+    request:
+      enabled: true # 开启请求压缩
+      mime-types: text/html,application/xml,application/json # 设置压缩的数据类型
+      min-request-size: 2048 # 设置触发压缩的大小下限  kb
+    response:
+      enabled: true # 开启响应压缩

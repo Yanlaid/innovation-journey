@@ -18,6 +18,7 @@
         <module>user-service</module>
         <module>eureka-service3</module>
         <module>eureka-service2</module>
+        <module>zuul-demo</module>
     </modules>
 
     <properties>

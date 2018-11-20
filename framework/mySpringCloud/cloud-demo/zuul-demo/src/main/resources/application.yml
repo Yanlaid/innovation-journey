@@ -1,0 +1,32 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: api-gateway #指定服务名
+zuul:
+  prefix: /api #添加路由前缀
+  routes:
+    user-service: /user-service/**  #简化版的写法，前面的user-service是不可以乱写的
+
+#    user-service: #l路由名，可以随意书写
+#      path: /user-service/**
+#      serviceId: user-service
+##      url: http://localhost:9101
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5 #获取服务列表
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1 #告诉eureka自己的IP
+ribbon:
+  ConnectTimeout: 250 # 连接超时时间(ms)
+  ReadTimeout: 2000 # 通信超时时间(ms)
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
