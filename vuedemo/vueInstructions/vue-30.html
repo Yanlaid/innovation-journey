@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--TODO
+            在组件内写上props中定义好的属性
+    -->
+<child1 title="父--->子" name="父子父子父子"></child1>
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.component('child1', {
+            template: '<div>父向子通讯--->\\{{title}}---oo--{{name}}\\</div>',
+            data() {
+            },
+            /*TODO
+                父向子通讯使用props属性
+                数组：可使用多个
+            * */
+            props: ['title','name']
+        }
+    )
+    let aa = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        computed: {},
+        watch: {},
+        components: {}
+    })
+</script>
+</body>
+</html>

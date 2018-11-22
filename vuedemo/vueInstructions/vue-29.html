@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <tpl2></tpl2>
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    /*TODO
+        局部组件
+    * */
+    let tpl2 = {
+        template: '<button @click="count++">点了{{count}}次</button>',
+        data() {
+            return {
+                count: 0
+            }
+        }
+    };
+    let aa = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        computed: {},
+        watch: {},
+        /*TODO
+            局部组件：在父实例中需要使用
+                    components属性添加到实例中
+        * */
+        components:{
+            tpl2
+        }
+    })
+</script>
+</body>
+</html>

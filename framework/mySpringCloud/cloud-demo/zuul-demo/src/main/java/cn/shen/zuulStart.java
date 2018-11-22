@@ -6,7 +6,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
-// TODO 开启Zuul网站
+/*
+    TODO
+        开启
+        zuul网关
+* */
 @EnableZuulProxy
 @EnableDiscoveryClient
 public class zuulStart {

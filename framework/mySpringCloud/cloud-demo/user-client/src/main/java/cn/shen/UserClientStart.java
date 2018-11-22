@@ -11,6 +11,7 @@ import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
+//发现并注册到eureka服务
 @EnableDiscoveryClient
 //开启Hystrix熔断器
 @EnableHystrix

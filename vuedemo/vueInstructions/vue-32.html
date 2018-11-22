@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<div id="app">
+    父中的num值为{{num}}
+    <!--TODO
+            子向父通讯时：子中一套方法，父中一套方法，最后需要将子父关联起来。
+            关联的方式是下方 chil 节点中的 @xxx='xxx' 用来与父子关联
+    -->
+    <chil @addp="addp()" @reducep="reducep()"></chil>
+</div>
+<script>
+    let child3 = {
+        // language=HTML
+        template: `
+            <div>
+                 <button @click="add()">+</button>
+                 <button @click="reduce()">-</button>
+            </div>
+        `,
+        /* TODO
+                特殊的 this.$emit(xxx) 用来调用父类中的方法
+        * */
+        methods: {
+            add() {
+                this.$emit('addp');
+            },
+            reduce() {
+                this.$emit('reducep');
+            }
+        }
+    };
+    let aa = new Vue({
+        el: "#app",
+        data: {num: 10},
+        /*TODO
+              父类中的方法
+        * */
+        methods: {
+            addp() {
+                this.num++;
+            },
+            reducep() {
+                this.num--;
+            }
+        },
+        computed: {},
+        watch: {},
+        components: {chil: child3}
+    })
+</script>
+</body>
+</html>

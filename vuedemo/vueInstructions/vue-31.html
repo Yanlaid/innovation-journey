@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--
+        TODO
+            对于父向子通讯时，若子所需要的值要从父中
+            data属性中取，使用v-bind，即缩写  ：
+    -->
+ <cd1 :somes="users" :abdd="some"></cd1>
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let child = {
+
+        template: `
+            <ul>
+                {{abdd}}
+                <li v-for="(value,index) in somes" :key="index">
+                       {{index}}-000-{{value.name}}----{{value.age}}
+                </li>
+            </ul>
+        `,
+        /*TODO
+            复杂类型
+        * */
+        props: {
+            somes: {
+                type: Array,  //TODO 声明item类型
+                default: []
+            },
+            abdd:{
+              type:String,
+              default: 'jj'
+            }
+        }
+    };
+    let aa = new Vue({
+        el: "#app",
+        data: {
+            users: [
+                {name: '沈', age: 16},
+                {name: '王', age: 17}
+            ],
+            some: '沈欣然'
+
+        },
+        methods: {},
+        computed: {},
+        watch: {},
+        components: {cd1:child}
+    })
+</script>
+</body>
+</html>
