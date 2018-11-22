@@ -2,44 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>index</title>
-
+    <title>reviewIndex</title>
 </head>
 <body>
-
 <div id="app">
-    <span><router-link to="/login">登录</router-link></span>
+    <!--TODO 路由连接-->
     <span><router-link to="/register">注册</router-link></span>
-
+    <span><router-link to="/login">登录</router-link></span>
     <div>
-        <!--用来展现组件-->
+        <!--TODO 路由组件展示-->
         <router-view></router-view>
     </div>
 </div>
 <script src="../node_modules/vue/dist/vue.js"></script>
+<!--TODO 注意vue-router的引入顺序，在vue.js后-->
 <script src="../node_modules/vue-router/dist/vue-router.js"></script>
-<script src="js/register.js"></script>
 <script src="js/login.js"></script>
+<script src="js/register.js"></script>
 <script>
-    //vue-router组件
     let router = new VueRouter({
-        routes: [  /*编写路由规则*/
+        routes: [ /*TODO 多个路由规则*/
             {
-                path: '/login',  /*请求路径*/
-                component: loginForm /*组件名称*/
-            },
-            {
+                path: '/login', /*TODO 请求路径*/
+                component: loginForm /*TODO 组件名称*/
+            }, {
                 path: '/register',
                 component: registerForm
             }
         ]
     });
-
-
     let app = new Vue({
         el: '#app',
-        data: {},
         components: {loginForm, registerForm},
+        /*TODO 将vue-router实例添加到vue中*/
         router
     });
 </script>
