@@ -19,7 +19,7 @@
 
         template: `
             <ul>
-                {{abdd}}
+                {{abdd}}--{{adfa}}
                 <li v-for="(value,index) in somes" :key="index">
                        {{index}}-000-{{value.name}}----{{value.age}}
                 </li>
@@ -28,6 +28,11 @@
         /*TODO
             复杂类型
         * */
+        data(){
+            return{
+                adfa: 'rtyuioiuytrtyui',
+            }
+        },
         props: {
             somes: {
                 type: Array,  //TODO 声明item类型

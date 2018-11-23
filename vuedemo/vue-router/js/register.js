@@ -7,4 +7,5 @@ const registerForm = {
     确认密码：<input type="password"><br/>\
     </div>\
     '
-}
+};
+export default registerForm;
