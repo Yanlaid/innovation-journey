@@ -3,25 +3,36 @@ server:
 spring:
   application:
     name: api-gateway
+
 eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:10086/eureka
     registry-fetch-interval-seconds: 5
+
   instance:
     prefer-ip-address: true
     ip-address: 127.0.0.1
     instance-id: ${spring.application.name}:${server.port}
+
 zuul:
-  prefix: /api # ����·��ǰ׺
+  prefix: /api # 添加路由前缀
   retryable: true
+#  ignored-services:
+#    - upload-service # 忽略upload-service服务
+
+  routes:
+    item-service: /item/**  # 将商品微服务映射到/item/**
+    search-service: /search/**  # 将商品微服务映射到/item/**
+
 ribbon:
-  ConnectTimeout: 250 # ���ӳ�ʱʱ��(ms)
-  ReadTimeout: 2000 # ͨ�ų�ʱʱ��(ms)
+  ConnectTimeout: 250 # 连接超时时间(ms)
+  ReadTimeout: 2000 # 通信超时时间(ms)
+
 hystrix:
   command:
     default:
       execution:
         isolation:
           thread:
-            timeoutInMillisecond: 10000 # �۶ϳ�ʱʱ����10000ms
+            timeoutInMillisecond: 10000 # 熔断超时时长：10000ms
