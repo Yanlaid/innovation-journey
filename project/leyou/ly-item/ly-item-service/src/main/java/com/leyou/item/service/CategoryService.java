@@ -1,9 +1,9 @@
 package com.leyou.item.service;
 
-import com.leyou.pojo.Category;
+import com.leyou.item.pojo.Category;
 
 import java.util.List;
 
 public interface CategoryService {
-    List<Category> queryCategorys(Long pid);
+    List<Category> queryByParentId(Long pid);
 }
