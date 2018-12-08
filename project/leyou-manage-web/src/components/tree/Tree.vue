@@ -73,7 +73,7 @@
         for (let i in src) {
           let d = src[i];
           if (d.id === id) {
-            src.splice(i, 1)
+            src.splice(i, 1);
             return;
           }
           if (d.children && d.children.length > 0) {

@@ -21,7 +21,7 @@
 <script>
   export default {
     name: "MyBrand",
-    data () {
+    data() {
       return {
         totalBrands: 0,
         brands: [],
@@ -37,7 +37,7 @@
     },
     watch: {
       pagination: {
-        handler () {
+        handler() {
           this.getDataFromApi()
             .then(data => {
               this.desserts = data.items
@@ -47,18 +47,20 @@
         deep: true
       }
     },
-    mounted () {
+    mounted() {
       this.getDataFromServer();
     },
     methods: {
-      getDataFromServer () {
-        this.brands = [
-          {id:1, name: '三星', image:'123', letter:'S'},
-          {id:1, name: '三星', image:'123', letter:'S'},
-          {id:1, name: '三星', image:'321', letter:'S'},
-        ]
-      },
+      getDataFromServer() {
+        this.$http.get("/item/brand/page")
+          .then(({data}) => {
+          console.log(data)
+        }).catch(resp => {
+          console.log("出错了");
+        });
+      }
     }
+
   }
 </script>
 
