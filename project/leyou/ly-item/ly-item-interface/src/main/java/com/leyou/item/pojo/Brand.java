@@ -45,5 +45,5 @@ public class Brand {
     public void setLetter(Character letter) {
         this.letter = letter;
     }
-  /
+
 }
