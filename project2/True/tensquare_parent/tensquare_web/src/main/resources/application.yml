@@ -1,0 +1,44 @@
+server:
+  port: 9012
+spring:
+  application:
+    name: tensquare-web #\u6307\u5B9A\u670D\u52A1\u540D
+eureka:
+  client:
+    serviceUrl: #Eureka\u5BA2\u6237\u7AEF\u4E0EEureka\u670D\u52A1\u7AEF\u8FDB\u884C\u4EA4\u4E92\u7684\u5730\u5740
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+zuul:
+  #\u8DEF\u7531\u5B9A\u4E49
+  routes:
+    #\u53EF\u4EE5\u968F\u4FBF\u5199\uFF0C\u5728zuul\u4E0A\u9762\u552F\u4E00\u5373\u53EF\uFF1B\u5F53\u8FD9\u91CC\u7684\u503C = service-id\u65F6\uFF0Cservice-id\u53EF\u4EE5\u4E0D\u5199\u3002
+    tensquare-base: #\u57FA\u7840
+      #\u60F3\u8981\u6620\u5C04\u5230\u7684\u8DEF\u5F84\uFF0C\u914D\u7F6E\u8BF7\u6C42URL\u7684\u8BF7\u6C42\u89C4\u5219
+      path: /base/**
+      #Eureka\u4E2D\u7684serviceId,\u6307\u5B9AEureka\u6CE8\u518C\u4E2D\u5FC3\u4E2D\u7684\u670D\u52A1id
+      serviceId: tensquare-base #\u6307\u5B9AEureka\u6CE8\u518C\u4E2D\u5FC3\u4E2D\u7684\u670D\u52A1id
+    tensquare-article: #\u6587\u7AE0
+      path: /article/** #\u914D\u7F6E\u8BF7\u6C42URL\u7684\u8BF7\u6C42\u89C4\u5219
+      serviceId: tensquare-article #\u6307\u5B9AEureka\u6CE8\u518C\u4E2D\u5FC3\u4E2D\u7684\u670D\u52A1id
+    tensquare-gathering: #\u6D3B\u52A8
+      path: /gathering/** #\u914D\u7F6E\u8BF7\u6C42URL\u7684\u8BF7\u6C42\u89C4\u5219
+      serviceId: tensquare-gathering #\u6307\u5B9AEureka\u6CE8\u518C\u4E2D\u5FC3\u4E2D\u7684\u670D\u52A1id
+    tensquare-friend: #\u4EA4\u53CB
+      path: /friend/** #\u914D\u7F6E\u8BF7\u6C42URL\u7684\u8BF7\u6C42\u89C4\u5219
+      serviceId: tensquare-friend #\u6307\u5B9AEureka\u6CE8\u518C\u4E2D\u5FC3\u4E2D\u7684\u670D\u52A1id
+    tensquare-qa: #\u95EE\u7B54
+      path: /qa/** #\u914D\u7F6E\u8BF7\u6C42URL\u7684\u8BF7\u6C42\u89C4\u5219
+      serviceId: tensquare-qa #\u6307\u5B9AEureka\u6CE8\u518C\u4E2D\u5FC3\u4E2D\u7684\u670D\u52A1id
+    tensquare-recruit: #\u62DB\u8058
+      path: /recruit/** #\u914D\u7F6E\u8BF7\u6C42URL\u7684\u8BF7\u6C42\u89C4\u5219
+      serviceId: tensquare-recruit #\u6307\u5B9AEureka\u6CE8\u518C\u4E2D\u5FC3\u4E2D\u7684\u670D\u52A1id
+    tensquare-spit: #\u5410\u69FD
+      path: /spit/** #\u914D\u7F6E\u8BF7\u6C42URL\u7684\u8BF7\u6C42\u89C4\u5219
+      serviceId: tensquare-spit #\u6307\u5B9AEureka\u6CE8\u518C\u4E2D\u5FC3\u4E2D\u7684\u670D\u52A1id
+    tensquare-user: #\u7528\u6237
+      path: /user/** #\u914D\u7F6E\u8BF7\u6C42URL\u7684\u8BF7\u6C42\u89C4\u5219
+      serviceId: tensquare-user #\u6307\u5B9AEureka\u6CE8\u518C\u4E2D\u5FC3\u4E2D\u7684\u670D\u52A1id
+    tensquare-search: #\u7528\u6237
+      path: /search/** #\u914D\u7F6E\u8BF7\u6C42URL\u7684\u8BF7\u6C42\u89C4\u5219
+      serviceId: tensquare-search #\u6307\u5B9AEureka\u6CE8\u518C\u4E2D\u5FC3\u4E2D\u7684\u670D\u52A1id

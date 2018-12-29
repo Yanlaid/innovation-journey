@@ -1,0 +1,19 @@
+server:
+  port: 12000
+spring:
+  application:
+    name: tensquare-config #\u670D\u52A1\u540D
+  cloud:
+    config:
+      server:
+        #Git\u8FDC\u7A0B\u4ED3\u5E93
+        git:
+          uri: https://gitee.com/shenxinr/tensquare_config.git
+eureka:
+  client:
+    #Eureka\u670D\u52A1\u7684\u5730\u5740
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    #\u7528\u4E8E\u8868\u793A\u5728\u731C\u6D4B\u4E3B\u673A\u540D\u65F6\uFF0C\u670D\u52A1\u5668\u7684IP\u5730\u5740\u5E94\u8BE5\u4E0E\u64CD\u4F5C\u7CFB\u7EDF\u62A5\u544A\u7684\u4E3B\u673A\u540D\u76F8\u5BF9\u5E94\u3002(\u6CE8\u518C\u670D\u52A1\u548C\u5BA2\u6237\u7AEF\u5982\u679C\u5728\u4E00\u53F0\u673A\u5668\u4E0A\u5219\u65E0\u9700\u914D\u7F6E)
+    prefer-ip-address: true

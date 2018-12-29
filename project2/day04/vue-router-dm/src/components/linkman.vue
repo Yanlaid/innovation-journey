@@ -1,5 +1,7 @@
 <template>
-    $END$
+    <div>
+      <h2>我是联系人</h2>
+    </div>
 </template>
 
 <script>

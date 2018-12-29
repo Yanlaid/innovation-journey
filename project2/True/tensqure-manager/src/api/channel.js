@@ -1,6 +1,6 @@
 import request from '@/utils/request'
-const group_name = 'atr'
-const api_name = 'channel'
+const group_name = 'api'
+const api_name = 'article'
 export default {
   getList() {
     return request({

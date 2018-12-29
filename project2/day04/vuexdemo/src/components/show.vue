@@ -1,5 +1,7 @@
 <template>
-    $END$
+  <div>
+    show.vue::{{$store.state.count}}
+  </div>
 </template>
 
 <script>

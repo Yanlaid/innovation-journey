@@ -32,6 +32,7 @@
         <template slot-scope="scope">
           <!--scope.row.id 代表当前行的id-->
           <el-button @click="handleEdit(scope.row.id)" type="text" size="small">编辑</el-button>
+          <el-button @click="handleDelete(scope.row.id)" type="text" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -103,14 +104,16 @@
       }
     },
     created() {
-      this.fetchData();
+      this.fetchData()
       cityApi.getCityList().then(resp => {
         this.cityList = resp.data
       })
     },
     methods: {
       fetchData() {
+        // alert(this.currentPage);
         gatheringApi
+          //TODO 此处取值
           .getPageList(this.currentPage, this.pageSize, this.searchMap)
           .then(resp => {
             if (resp.flag) {
@@ -129,7 +132,7 @@
         }
 
       },
-  /*编辑*/
+      /*编辑*/
       handleEdit(id) {
         this.id = id
         gatheringApi.findById(id).then(resp => {
@@ -170,6 +173,29 @@
         this.id = 0
         this.pojo = {}
         this.dialogFormVisible = true
+      },
+      handleDelete(id) {
+
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          gatheringApi.deletePojoById(id).then(resp => {
+            this.$message({
+              type: resp.flag ? 'success' : 'warning',
+              message: resp.message
+            })
+            if (resp.flag) {
+              this.fetchData()
+            }
+          })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          })
+        })
       }
     }
   }

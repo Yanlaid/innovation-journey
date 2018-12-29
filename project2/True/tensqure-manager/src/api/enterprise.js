@@ -1,6 +1,6 @@
 import request from '@/utils/request'
-const group_name = 'recruit'
-const api_name = 'enterprise'
+const group_name = 'api'
+const api_name = 'recruit'
 export default {
   getList() {
     return request({

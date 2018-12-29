@@ -1,11 +1,17 @@
 import request from '@/utils/request'
-const group_name = 'atr'
+const group_name = 'api'
 const api_name = 'article'
 export default {
   getList() {
     return request({
       url: `/${group_name}/${api_name}`,
       method: 'get'
+    })
+  },
+  examine(id){
+    return request({
+      url: `/${group_name}/${api_name}/examine/${id}`,
+      method: 'put'
     })
   },
   search(page, size, searchMap) {
