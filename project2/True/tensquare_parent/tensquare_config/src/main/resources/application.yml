@@ -9,6 +9,15 @@ spring:
         #Git\u8FDC\u7A0B\u4ED3\u5E93
         git:
           uri: https://gitee.com/shenxinr/tensquare_config.git
+    #MQ配置
+    rabbitmq:
+      host: 193.112.75.251
+  #暴露触发消息总线的地址
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: bus-refresh
 eureka:
   client:
     #Eureka\u670D\u52A1\u7684\u5730\u5740
